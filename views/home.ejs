@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Pentas Mod 2023 by Turu Champ</title>
+</head>
+<body>
+        <% if (tipe) { %>
+            <% jadwal.forEach((item) => { %>
+                <div  style="margin-bottom: 65px">
+                    <p>
+                        <h4><b>Tanggal Ujian    : <%= item.tanggal_ujian %></b></h4>
+                        <h4><b>Waktu:           : <%= item.jam_mulai %> - <%= item.jam_selesai %></b></h4>
+                        <h4><b>Nama Mapel       : <%= item.n_pelajaran %></b></h4>
+                        <h4><b>Nilai            : <%= item.nilai %></b></h4>
+                        <% if (item.nilai <= kkm) { %>
+                            <h4><b><a stlye="text-decoration: none" href="/pentas/ujian/<%= tipe %>/<%= item.id %>/<%= item.pelajaran_id %>/<%= item.jadwal_detail_id %>/<%= item.urutan %>">
+                                <% if (item.nilai !== null) { %>
+                                    REVISI NILAI MEK
+                                <% } else { %>
+                                    KERJAIN LAH KNTL
+                                <% } %>
+                            </a></b></h4>
+                        <% } else { %>
+                            <h4>
+                                <b>
+                                    <p>
+                                        AWOKWOK mampus, KKM lu gw setting <%= kkm %> :D
+                                    </p>
+                                    <p>
+                                        EAAA, gabisa edit nilai y bosss wkwkwkwk, makanya beli premium dekkk
+                                    </p>
+                                </b>
+                            </h4>
+                        <% } %>
+                    </p>
+                </div>
+            <% }) %>
+        <% } %>
+
+        <div style="margin-top: 150px">
+            <a href="/pentas/logout" style="text-decoration: none;">LOGOUT MEK!</a>
+        </div>
+
+        <% if (alert !== null) { %>
+            <script>
+                alert('<%= alert %>')
+            </script>
+        <% } %>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "turunilaiauto",
+  "version": "1.0.0",
+  "description": "auto revisi nilai pentas",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhammad Naufal Al Fattah",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "connect-redis": "^7.1.0",
+    "dedent": "^1.5.1",
+    "dedent-js": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-mysql-session": "^3.0.0",
+    "express-session": "^1.17.3",
+    "https": "^1.0.0",
+    "mysql2": "^3.6.1",
+    "qs": "^6.11.2",
+    "redis": "^4.6.11"
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian | Pentas Mod 2023 by Turu Champ</title>
+</head>
+<body>
+    <% if (data && data.length > 0) { %>
+        <form method="post" action="">
+            <% for (let i = 0; i < data.length; i++) { %>
+                <p>
+                    <b><%= i + 1 %>.</b>  <%= data[i].soal %>
+                    <input type="hidden" name="soal_id" value="<%= data[i].id %>">
+                    <br><br>
+                    <label>
+                        <input type="radio" name="jawaban_<%= data[i].id %>" value="A" onchange="simpanJawaban(this)">A. <%= data[i].pil_a %>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="jawaban_<%= data[i].id %>" value="B" onchange="simpanJawaban(this)">B. <%= data[i].pil_b %>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="jawaban_<%= data[i].id %>" value="C" onchange="simpanJawaban(this)">C. <%= data[i].pil_c %>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="jawaban_<%= data[i].id %>" value="D" onchange="simpanJawaban(this)">D. <%= data[i].pil_d %>
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="jawaban_<%= data[i].id %>" value="E" onchange="simpanJawaban(this)">E. <%= data[i].pil_e %>
+                    </label>
+                </p>
+                <br>
+            <% } %>
+            <br>
+            <button type="submit">KIRIM UJIAN KNTOOOL!</button>
+        </form>
+    <% } else { %>
+        <script>
+            alert('error kontolll!')
+        </script>
+    <% } %>
+
+    <% if (success == false) { %>
+        <script>
+            alert('<%= reason %>')
+        </script>
+    <% } %>
+
+    <% if (alert !== null) { %>
+        <script>
+            alert('<%= alert %>')
+        </script>
+    <% } %>
+
+
+    <script>
+        // Fungsi untuk menyimpan nilai yang dipilih ke penyimpanan lokal
+        function simpanJawaban(radio) {
+            const namaRadio = radio.name;
+            const nilaiRadio = radio.value;
+            localStorage.setItem(namaRadio, nilaiRadio);
+        }
+
+        // Fungsi untuk mengisi kembali formulir sesuai dengan nilai yang disimpan
+        function isiKembaliFormulir() {
+            const inputRadios = document.querySelectorAll('input[type="radio"]');
+
+            inputRadios.forEach((radio) => {
+                const nilaiRadio = localStorage.getItem(radio.name);
+
+                if (nilaiRadio === radio.value) {
+                    radio.checked = true;
+                }
+            });
+        }
+
+        // Panggil fungsi isiKembaliFormulir saat halaman dimuat
+        window.addEventListener('load', isiKembaliFormulir);
+    </script>
+</body>
+</html>
